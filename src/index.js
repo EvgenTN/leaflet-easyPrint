@@ -186,8 +186,8 @@ L.Control.EasyPrint = L.Control.extend({
       widthForExport = this.originalState.mapWidth
     }
     domtoimage.toPng(plugin.mapContainer, {
-        width: parseInt(widthForExport),
-        height: parseInt(plugin.mapContainer.style.height.replace('px'))
+        width: parseInt(this._map.getSize().x),   // little dirty hack fix
+        height: parseInt(this._map.getSize().y)   // little dirty hack fix
       })
       .then(function (dataUrl) {
           var blob = plugin._dataURItoBlob(dataUrl);
